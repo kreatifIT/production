@@ -1,0 +1,150 @@
+{
+    "mail": {
+        "base": {
+            "header": "Benvenuto da AMANUBI"
+        },
+        "customer_register": "%letterName% %firstName% %lastName%,<br>grazie per esserti registrato nel nostro negozio.<br>Ti sarà concesso l'accesso tramite il tuo indirizzo email <strong>%email%</strong> e la password da te scelta.<br>Puoi cambiare la tua password in qualsiasi momento in seguito.",
+        "order_confirmation_mail": {
+            "intro": "Ciao %letterName% %firstName% %lastName%,<br><br>Il tuo ordine è stato ricevuto da noi il %orderDate%.<br><br>OrderNumber: %orderNumber%<br><br>Una volta ricevuto il pagamento, riceverai una notifica separata e il tuo ordine sarà processato. <br><br>Puoi controllare lo stato attuale del tuo ordine in qualsiasi momento cliccando su questo link:%orderStatusLink%<br>Puoi anche usare questo link per modificare l'ordine, cambiare il metodo di pagamento o effettuare un pagamento a posteriori.<br><br><strong>Informazioni sul tuo ordine:</strong><br><br>",
+            "products_table": {
+                "product_number": "Numero prodotto",
+                "description": "descrizione",
+                "quantities": "quantità",
+                "price": "prezzo",
+                "total": "somma"
+            },
+            "costs": "Spese di spedizione: %shipping%<br>Totale netto: %netTotal%",
+            "vat_info": {
+                "plus": "più",
+                "including": "incl",
+                "rate": "%percent%% IVA. %tax%"
+            },
+            "total_gross": "Costi lordi totali: %value%",
+            "rounded_total_gross": "Costi lordi totali: %value%",
+            "info_labels": {
+                "selected_shipping_type": "Tipo di spedizione selezionato:",
+                "billing_address": "Indirizzo di fatturazione:",
+                "shipping_address": "Indirizzo di spedizione:"
+            },
+            "vat_id": "Il tuo ID IVA: %id% Dopo una verifica riuscita e a condizione che tu stia ordinando da fuori l'UE, riceverai la tua merce esente da IVA.",
+            "outro": "Puoi anche controllare lo stato attuale del tuo ordine in qualsiasi momento sul nostro sito web nella sezione \"Il mio conto\" - \"I miei ordini\": %link%<br>Se hai delle domande, non esitare a contattarci."
+        },
+        "order_delivery.state.shipped": "%letterName% %firstName% %lastName%,<br><br>lo stato di consegna del tuo ordine su %salesChannel% (Numero: %orderNumber%) da %orderDate% è cambiato. <br><strong>L'ordine ha ora lo stato di consegna: %status%. </strong><br><br>Puoi anche controllare lo stato attuale del tuo ordine in qualsiasi momento sul nostro sito web nella sezione \"Il mio account\" - \"I miei ordini\": %link%<br>Tuttavia, se hai scelto di acquistare senza registrarti, cioè senza creare un account cliente, questa opzione non è disponibile per te",
+        "order_transaction.state.refunded": "%letterName% %firstName% %lastName%,<br><br>lo stato del pagamento per il tuo ordine su %salesChannel% (Numero: %orderNumber%) da %orderDate% è cambiato.<strong>L'ordine ha ora lo stato di pagamento: %status%.</strong><br><br>Puoi anche controllare lo stato attuale del tuo ordine in qualsiasi momento sul nostro sito web nella sezione \"Il mio account\" - \"I miei ordini\": %link%<br>Tuttavia, se hai scelto di acquistare senza registrarti, cioè senza creare un account cliente, questa opzione non è disponibile per te",
+        "password_change": "Ciao %firstName% %lastName%,<br/><br/>Hai richiesto una nuova password per il tuo account %shopName%. Clicca sul seguente link per resettare la tua password:<br/><br/><a href=\"%link%\">%link%</a><br/><br/>Questo link sarà valido per le prossime 2 ore. Se non desidera reimpostare la sua password, la preghiamo di ignorare questa e-mail - nessun cambiamento sarà effettuato.<br/><br/>Saluti<br>Il suo %shopName%-Team",
+        "order_transaction.state.paid": {
+            "intro": "Ciao %letterName% %firstName% %lastName%<br><br>Abbiamo ricevuto il tuo pagamento e ora elaboreremo ulteriormente l'ordine.<br><br>Numero ordine: %orderNumber%<br><br><strong>Informazioni sul tuo ordine:</strong><br>",
+            "products_table": {
+                "product_number": "Numero prodotto",
+                "description": "descrizione",
+                "quantities": "quantità",
+                "price": "prezzo",
+                "total": "somma"
+            },
+            "costs": "Spese di spedizione: %shipping%<br>Totale netto: %netTotal%",
+            "vat_info": {
+                "plus": "più",
+                "including": "incl",
+                "rate": "%percent%% IVA. %tax%"
+            },
+            "total_gross": "Costi lordi totali: %value%",
+            "rounded_total_gross": "Costi lordi totali: %value%",
+            "info_labels": {
+                "selected_shipping_type": "Tipo di spedizione selezionato:",
+                "billing_address": "Indirizzo di fatturazione:",
+                "shipping_address": "Indirizzo di spedizione:"
+            },
+            "vat_id": "Il tuo ID IVA: %id% Dopo una verifica riuscita e a condizione che tu stia ordinando da fuori l'UE, riceverai la tua merce esente da IVA.",
+            "outro": "Puoi anche controllare lo stato attuale del tuo ordine in qualsiasi momento sul nostro sito web nella sezione \"Il mio conto\" - \"I miei ordini\": %link%<br>Se hai delle domande, non esitare a contattarci."
+        },
+        "newsletterRegistro": {
+            "headline": "Ciao %firstName% %lastName%",
+            "text1": "grazie per esserti iscritto",
+            "text2": "Ti sei iscritto con successo alla nostra newsletter"
+        },
+        "customer.group.registration.accepted": "%letterName% %lastName%,<br><br>Il tuo account è stato attivato per il gruppo clienti %group%.<br>Da ora in poi acquisterai alle nuove condizioni di questo gruppo clienti.<br>Per ulteriori domande non esitare a contattarci",
+        "guest_order.double_opt_in": "Hello %displayName% %lastName%,<br><br>Per favore conferma il tuo indirizzo email usando il link qui sotto:<br><br><a href=\"%url%\">Conferma Email</a><br><br>Dopo la conferma, sarai diretto alla schermata di completamento dell'ordine, dove potrai rivedere e finalizzare il tuo ordine.<br>Con la conferma, accetti anche che possiamo inviarti email aggiuntive come parte dell'adempimento del contratto",
+        "customer.group.registration.declined": "%letterName% %lastName%,<br><br>La ringraziamo per il suo interesse nei termini e condizioni per il gruppo di clienti %group%.<br>Purtroppo, non siamo in grado di attivarli per questo gruppo di clienti.<br>Per qualsiasi domanda di qualsiasi tipo, non esiti a chiamarci o a mandarci un'email a questo proposito",
+        "order_delivery.state.partially_refunded": "%letterName% %firstName% %lastName%,<br><br>lo stato di consegna del tuo ordine su %salesChannel% (Numero: %orderNumber%) da %orderDate% è cambiato.<br><strong>L'ordine ha ora lo stato di consegna: %status%. </strong><br><br>Puoi anche controllare lo stato attuale del tuo ordine in qualsiasi momento sul nostro sito web nella sezione \"Il mio account\" - \"I miei ordini\": %link%<br>Tuttavia, se hai scelto di acquistare senza registrarti, cioè senza creare un account cliente, questa opzione non è disponibile per te",
+        "order_transaction.state.cancelled": {
+            "intro": "Ciao %letterName% %firstName% %lastName%,<br><br>Il tuo ordine è stato ricevuto da noi il %orderDate%.<br><br>OrderNumber: %orderNumber%<br>Il processo di pagamento con %paymentType% non è ancora completo. Puoi riprendere il processo di pagamento usando il seguente URL: %link%<br><br><strong>Informazioni sul tuo ordine:</strong><br><br>",
+            "products_table": {
+                "product_number": "Numero prodotto",
+                "description": "descrizione",
+                "quantities": "quantità",
+                "price": "prezzo",
+                "total": "somma"
+            },
+            "costs": "Spese di spedizione: %shipping%<br>Totale netto: %netTotal%",
+            "vat_info": {
+                "plus": "più",
+                "including": "incl",
+                "rate": "%percent%% IVA. %tax%"
+            },
+            "total_gross": "Costi lordi totali: %value%",
+            "rounded_total_gross": "Costi lordi totali: %value%",
+            "info_labels": {
+                "selected_shipping_type": "Tipo di spedizione selezionato:",
+                "billing_address": "Indirizzo di fatturazione:",
+                "shipping_address": "Indirizzo di spedizione:"
+            },
+            "vat_id": "Il tuo ID IVA: %id% Dopo una verifica riuscita e a condizione che tu stia ordinando da fuori l'UE, riceverai la tua merce esente da IVA.",
+            "outro": "Puoi anche controllare lo stato attuale del tuo ordine in qualsiasi momento sul nostro sito web nella sezione \"Il mio conto\" - \"I miei ordini\": %link%<br>Se hai delle domande, non esitare a contattarci."
+        },
+        "customer_register.double_opt_in": "Hello %displayName% %lastName%,<br><br>Grazie per esserti registrato con %salesChannel%.<br>Per favore conferma la tua registrazione usando il link qui sotto:<br><br><a href=\"%url%\">Completa Registrazione</a><br><br>Con la conferma, stai anche accettando di permetterci di inviarti ulteriori email come parte dell'adempimento del contratto",
+        "order.state.completed": "%letterName% %firstName% %lastName%,<br><br>lo stato dell'ordine per il tuo ordine con %salesChannel% (numero: %orderNumber%) da %orderDate% è cambiato. <strong>L'ordine ora ha lo stato dell'ordine: %status%.</strong><br><br>Puoi anche controllare lo stato attuale del tuo ordine in qualsiasi momento sul nostro sito web nella sezione \",Il mio account\" - \"I miei ordini\": %link%<br>Tuttavia, se hai scelto di acquistare senza registrarti, cioè senza creare un account cliente, questa opzione non è disponibile per te",
+        "order.state.cancelled": "%letterName% %firstName% %lastName%,<br><br>lo stato dell'ordine per il tuo ordine con %salesChannel% (numero: %orderNumber%) da %orderDate% è cambiato. <strong>L'ordine ora ha lo stato dell'ordine: %status%.</strong><br><br>Puoi anche controllare lo stato attuale del tuo ordine in qualsiasi momento sul nostro sito web nella sezione \",Il mio account\" - \"I miei ordini\": %link%<br>Tuttavia, se hai scelto di acquistare senza registrarti, cioè senza creare un account cliente, questa opzione non è disponibile per te",
+        "customer_group_change_reject": "%letterName% %lastName%,<br><br>La ringraziamo per il suo interesse nei termini e condizioni per il gruppo di clienti %group%.<br>Purtroppo, non siamo in grado di attivarli per questo gruppo di clienti.<br>Per qualsiasi domanda di qualsiasi tipo, non esiti a contattarci per telefono o e-mail riguardo a questo argomento",
+        "order_transaction.state.partially_paid": "%letterName% %firstName% %lastName%,<br><br>lo stato del pagamento per il tuo ordine su %salesChannel% (Numero: %orderNumber%) da %orderDate% è cambiato.<strong>L'ordine ha ora lo stato di pagamento: %status%.</strong><br><br>Puoi anche controllare lo stato attuale del tuo ordine in qualsiasi momento sul nostro sito web nella sezione \"Il mio account\" - \"I miei ordini\": %link%<br>Tuttavia, se hai scelto di acquistare senza registrarti, cioè senza creare un account cliente, questa opzione non è disponibile per te",
+        "order_transaction.state.reminded": "%letterName% %firstName% %lastName%,<br><br>lo stato del pagamento per il tuo ordine su %salesChannel% (Numero: %orderNumber%) da %orderDate% è cambiato. <strong>L'ordine ha ora lo stato di pagamento: %status%.</strong><br><br>Puoi anche controllare lo stato attuale del tuo ordine in qualsiasi momento sul nostro sito web nella sezione \"Il mio account\" - \"I miei ordini\": %link%<br>Tuttavia, se hai scelto di acquistare senza registrarti, cioè senza creare un account cliente, questa opzione non è disponibile per te",
+        "order_delivery.state.returned_partially": "%letterName% %firstName% %lastName%,<br><br>lo stato di consegna del tuo ordine su %salesChannel% (Numero: %orderNumber%) da %orderDate% è cambiato.<br><strong>L'ordine ha ora lo stato di consegna: %status%. </strong><br><br>Puoi anche controllare lo stato attuale del tuo ordine in qualsiasi momento sul nostro sito web nella sezione \"Il mio account\" - \"I miei ordini\": %link%<br>Tuttavia, se hai scelto di acquistare senza registrarti, cioè senza creare un account cliente, questa opzione non è disponibile per te",
+        "order_delivery.state.returned": "%letterName% %firstName% %lastName%,<br><br>lo stato di consegna del tuo ordine su %salesChannel% (Numero: %orderNumber%) da %orderDate% è cambiato.<br> <strong>L'ordine ha ora lo stato di consegna: %status%. </strong><br><br>Puoi anche controllare lo stato attuale del tuo ordine in qualsiasi momento sul nostro sito web nella sezione \"Il mio account\" - \"I miei ordini\": %link%<br>Tuttavia, se hai scelto di acquistare senza registrarti, cioè senza creare un account cliente, questa opzione non è disponibile per te",
+        "order_delivery.state.open": "%letterName% %firstName% %lastName%,<br><br>lo stato di consegna del tuo ordine su %salesChannel% (Numero: %orderNumber%) da %orderDate% è cambiato.<br> <strong>L'ordine ha ora lo stato di consegna: %status%. </strong><br><br>Puoi anche controllare lo stato attuale del tuo ordine in qualsiasi momento sul nostro sito web nella sezione \"Il mio account\" - \"I miei ordini\": %link%<br>Tuttavia, se hai scelto di acquistare senza registrarti, cioè senza creare un account cliente, questa opzione non è disponibile per te",
+        "newsletterDoubleOptIn": {
+            "headline": "Hello %firstName% %lastName%",
+            "text": "Felice di vederti interessato alla nostra newsletter!<br><br>Per evitare un uso improprio del tuo indirizzo email, ti abbiamo inviato questa email di conferma. Conferma che vuoi ricevere regolarmente la newsletter cliccando <a href=\"%url%\">qui</a>.<br><br>Se non hai richiesto la newsletter, ignora questa email."
+        },
+        "order.state.in_progress": "%letterName% %firstName% %lastName%,<br><br>lo stato dell'ordine per il tuo ordine con %salesChannel% (numero: %orderNumber%) da %orderDate% è cambiato. <strong>L'ordine ora ha lo stato dell'ordine: %status%.</strong><br><br>Puoi anche controllare lo stato attuale del tuo ordine in qualsiasi momento sul nostro sito web nella sezione \",Il mio account\" - \"I miei ordini\": %link%<br>Tuttavia, se hai scelto di acquistare senza registrarti, cioè senza creare un account cliente, questa opzione non è disponibile per te",
+        "order_delivery.state.shipped_partially": "%letterName% %firstName% %lastName%,<br><br>lo stato di consegna del tuo ordine su %salesChannel% (Numero: %orderNumber%) da %orderDate% è cambiato.<br><strong>L'ordine ha ora lo stato di consegna: %status%. </strong><br><br>Puoi anche controllare lo stato attuale del tuo ordine in qualsiasi momento sul nostro sito web nella sezione \"Il mio account\" - \"I miei ordini\": %link%<br>Tuttavia, se hai scelto di acquistare senza registrarti, cioè senza creare un account cliente, questa opzione non è disponibile per te",
+        "contact_form": "Il seguente messaggio ti è stato inviato tramite il modulo di contatto.<br><br>Nome: %firstName% %lastName%<br>Contatto Email: %email%<br><br>Numero di telefono: %phone%<br><br>Soggetto: %subject%<br><br>Messaggio: %comment%<br>",
+        "customer_group_change_accept": "Ciao,<br><br>il tuo conto commerciante a %salesChannel% è stato attivato.<br>Da ora in poi ti addebiteremo il prezzo netto",
+        "user.recovery.request": "Ciao %firstName% %lastName%,<br><br>è stata fatta una richiesta per resettare la tua password. Si prega di confermare il link qui sotto per definire una nuova password.<br><br><a href=\"%link%\">Reset Password</a><br><br>Questo link è valido solo per le prossime 2 ore. Dopodiché, sarà necessario richiedere nuovamente la reimpostazione della password. Se non desideri reimpostare la tua password, ignora questa e-mail - non verrà effettuato alcun cambiamento",
+        "customer.recovery.request": "Ciao %firstName% %lastName%,<br><br>è stata fatta una richiesta per resettare la tua password. Si prega di confermare il link qui sotto per definire una nuova password.<br><br><a href=\"%link%\">Reset Password</a><br><br>Questo link è valido solo per le prossime 2 ore. Dopodiché, sarà necessario richiedere nuovamente la reimpostazione della password. Se non desideri reimpostare la tua password, ignora questa e-mail - non verrà effettuato alcun cambiamento",
+        "order.state.open": "%letterName% %firstName% %lastName%,<br><br>lo stato dell'ordine per il tuo ordine con %salesChannel% (numero: %orderNumber%) da %orderDate% è cambiato. <strong>L'ordine ora ha lo stato dell'ordine: %status%.</strong><br><br>Puoi anche controllare lo stato attuale del tuo ordine in qualsiasi momento sul nostro sito web nella sezione \",Il mio account\" - \"I miei ordini\": %link%<br>Tuttavia, se hai scelto di acquistare senza registrarti, cioè senza creare un account cliente, questa opzione non è disponibile per te",
+        "order_transaction.state.open": "%letterName% %firstName% %lastName%,<br><br>lo stato del pagamento per il tuo ordine su %salesChannel% (Numero: %orderNumber%) da %orderDate% è cambiato. <strong>L'ordine ha ora lo stato di pagamento: %status%.</strong><br><br>Puoi anche controllare lo stato attuale del tuo ordine in qualsiasi momento sul nostro sito web nella sezione \"Il mio account\" - \"I miei ordini\": %link%<br>Tuttavia, se hai scelto di acquistare senza registrarti, cioè senza creare un account cliente, questa opzione non è disponibile per te",
+        "order_delivery.state.cancelled": "%letterName% %firstName% %lastName%,<br><br>lo stato di consegna del tuo ordine su %salesChannel% (Numero: %orderNumber%) da %orderDate% è cambiato.<br><strong>L'ordine ha ora lo stato di consegna: %status%. </strong><br><br>Puoi anche controllare lo stato attuale del tuo ordine in qualsiasi momento sul nostro sito web nella sezione \"Il mio account\" - \"I miei ordini\": %link%<br>Tuttavia, se hai scelto di acquistare senza registrarti, cioè senza creare un account cliente, questa opzione non è disponibile per te"
+    },
+    "subject": {
+        "base": "| AMANUBI",
+        "contact_form": "Richiesta di contatto ricevuta",
+        "customer.group.registration.accepted": "Customer Group Registration Accepted",
+        "customer.group.registration.declined": "Customer Group Registration Declinato",
+        "customer.recovery.request": "Recupero password",
+        "customer_group_change_accept": "Il tuo conto commerciante è stato attivato",
+        "customer_group_change_reject": "La tua richiesta di conto commerciante è stata rifiutata",
+        "customer_register": "La tua registrazione con %salesChannel%",
+        "customer_register.double_opt_in": "Per favore conferma la tua registrazione con %salesChannel%",
+        "newsletterDoubleOptIn": "Newsletter",
+        "newsletterRegister": "Register",
+        "order.state.cancelled": "Il tuo ordine con %salesChannel% è cancellato",
+        "order.state.completed": "Il tuo ordine con %salesChannel% è completato",
+        "order.state.in_progress": "Il tuo ordine con %salesChannel% è in corso",
+        "order.state.open": "Il tuo ordine con %salesChannel% è aperto",
+        "order_confirmation_mail": "Conferma ordine",
+        "order_delivery.state.cancelled": "Il tuo ordine con %salesChannel% è cancellato",
+        "order_delivery.state.shipped": "Il tuo ordine con %salesChannel% è stato consegnato",
+        "order_delivery.state.open": "Il tuo ordine con %salesChannel% è parzialmente restituito",
+        "order_delivery.state.returned": "Il tuo ordine con %salesChannel% è tornato",
+        "order_delivery.state.returned_partially": "Il tuo ordine con %salesChannel% è parzialmente rimborsato",
+        "order_delivery.state.shipped_partially": "Il tuo ordine con %salesChannel% è parzialmente consegnato",
+        "order_transaction.state.cancelled": "Il pagamento per il tuo ordine con %salesChannel% è annullato",
+        "order_transaction.state.open": "Il tuo pagamento con %salesChannel% è aperto",
+        "order_transaction.state.paid": "Il tuo ordine con %salesChannel% è completamente pagato",
+        "order_transaction.state.paid_partially": "Il tuo ordine con %salesChannel% è parzialmente pagato",
+        "order_transaction.state.refunded": "Il tuo ordine con %salesChannel% è rimborsato",
+        "order_transaction.state.refunded_partially": "Il tuo ordine con %salesChannel% è parzialmente rimborsato",
+        "order_transaction.state.reminded": "Promemoria per il tuo ordine con %salesChannel%",
+        "password_change": "Reset della password",
+        "user.recovery.request": "Recupero password"
+    }
+}

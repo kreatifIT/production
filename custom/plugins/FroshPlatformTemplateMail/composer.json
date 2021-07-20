@@ -1,0 +1,47 @@
+{
+    "name": "frosh/frosh-platform-template-mail",
+    "version": "0.4.1",
+    "type": "shopware-platform-plugin",
+    "description": "Load mail templates from theme",
+    "keywords": [
+        "adminer",
+        "shopware",
+        "frosh"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "FriendsOfShopware",
+            "homepage": "https://friendsofshopware.de"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Frosh\\TemplateMail\\": "src/"
+        }
+    },
+    "extra": {
+        "shopware-plugin-class": "Frosh\\TemplateMail\\FroshPlatformTemplateMail",
+        "label": {
+            "de-DE": "Mail Templates aus dem Theme verwenden",
+            "en-GB": "Use mail templates from theme"
+        },
+        "description": {
+            "de-DE": "Erlaubt es die Mail Templates in das Theme abzulegen. Dadurch sind sie versioniert und leichter zu deployen zwischen mehreren Umgebungen. Ebenfalls wird MJML unterstützt",
+            "en-GB": "Allows to store the mail templates in the theme. This makes them versioned and easier to deploy between multiple environments. Also MJML is supported."
+        },
+        "manufacturerLink": {
+            "de-DE": "https://github.com/FriendsOfShopware/FroshPlatformTemplateMail",
+            "en-GB": "https://github.com/FriendsOfShopware/FroshPlatformTemplateMail"
+        },
+        "supportLink": {
+            "de-DE": "https://github.com/FriendsOfShopware/FroshPlatformTemplateMail/issues",
+            "en-GB": "https://github.com/FriendsOfShopware/FroshPlatformTemplateMail/issues"
+        }
+    },
+    "require": {
+        "shopware/core": "~6.3 || ~6.4",
+        "lorenzo/pinky": "^1.0",
+        "nikic/php-parser": "*"
+    }
+}

@@ -1,0 +1,11 @@
+{% sw_extends '@Storefront/email/base.html.twig' %}
+
+{% block content %}
+    <p>
+        {{ "mail.guest_order.double_opt_in"|trans({
+            '%displayName%':  customer.salutation.displayName,
+            '%lastName%': customer.lastName,
+            '%url%': confirmUrl
+        })|sw_sanitize }}
+    </p>
+{% endblock %}

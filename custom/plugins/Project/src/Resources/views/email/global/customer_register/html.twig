@@ -1,0 +1,15 @@
+{% sw_extends '@Storefront/email/base.html.twig' %}
+
+{% block content %}
+    <p>
+        {{ "mail.customer_register"|trans({
+            '%letterName%': customer.salutation.translated.letterName,
+            '%firstName%': customer.firstName,
+            '%lastName%': customer.lastName,
+            '%email%': customer.email})|sw_sanitize }}
+    </p>
+{% endblock %}
+
+
+
+

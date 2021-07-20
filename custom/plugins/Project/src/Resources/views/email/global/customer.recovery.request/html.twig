@@ -1,0 +1,11 @@
+{% sw_extends '@Storefront/email/base.html.twig' %}
+
+{% block content %}
+    <p>
+        {{ "mail.customer.recovery.request"|trans({
+            '%firstName%': userRecovery.user.firstName,
+            '%lastName%': userRecovery.user.lastName,
+            '%link%': resetUrl
+        })|sw_sanitize }}
+    </p>
+{% endblock %}

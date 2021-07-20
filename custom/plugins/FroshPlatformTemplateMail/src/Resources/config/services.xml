@@ -1,0 +1,33 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <imports>
+        <import resource="loaders.xml"/>
+    </imports>
+    <services>
+        <service id="Frosh\TemplateMail\Services\MailFinderService">
+            <argument type="service" id="twig.loader.native_filesystem"/>
+            <argument type="tagged" tag="frosh_template_mail.loader"/>
+            <argument type="service" id="language.repository"/>
+            <argument type="service" id="Shopware\Core\Framework\Adapter\Translation\Translator"/>
+        </service>
+
+        <service id="Frosh\TemplateMail\Services\CachedMailFinderService" decorates="Frosh\TemplateMail\Services\MailFinderService">
+            <argument type="service" id="Frosh\TemplateMail\Services\CachedMailFinderService.inner"/>
+            <argument type="service" id="cache.app.taggable"/>
+        </service>
+
+        <service id="Frosh\TemplateMail\Services\StringTemplateRenderer" decorates="Shopware\Core\Framework\Adapter\Twig\StringTemplateRenderer">
+            <argument type="service" id="twig"/>
+        </service>
+
+        <service id="Frosh\TemplateMail\Subscriber\MailDataBagFilterSubscriber">
+            <argument type="service" id="mail_template_type.repository"/>
+            <argument type="service" id="Frosh\TemplateMail\Services\MailFinderService"/>
+            <tag name="kernel.event_subscriber"/>
+        </service>
+    </services>
+</container>

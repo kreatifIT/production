@@ -1,0 +1,18 @@
+{
+  "name": "swag/theme-skeleton",
+  "description": "Theme skeleton plugin - Kreatif",
+  "type": "shopware-platform-plugin",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Project\\": "src/"
+    }
+  },
+  "extra": {
+    "shopware-plugin-class": "Project\\Project",
+    "label": {
+      "de-DE": "Theme Project - Kreatif",
+      "en-GB": "Theme Project - Kreatif"
+    }
+  }
+}

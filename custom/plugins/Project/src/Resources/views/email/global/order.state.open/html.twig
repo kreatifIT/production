@@ -1,0 +1,16 @@
+{% sw_extends '@Storefront/email/base.html.twig' %}
+
+{% block content %}
+    <p>
+        {{ "mail.order.state.open"|trans({
+            '%letterName%': order.orderCustomer.salutation.translated.letterName,
+            '%firstName%': order.orderCustomer.firstName,
+            '%lastName%': order.orderCustomer.lastName,
+            '%salesChannel%': salesChannel.translated.name,
+            '%orderNumber%': order.orderNumber,
+            '%orderDate%': order.orderDateTime|format_datetime('medium', 'short', locale='en-GB'),
+            '%status%': order.stateMachineState.translated.name,
+            '%link%': rawUrl('frontend.account.order.single.page', { 'deepLinkCode': order.deepLinkCode }, salesChannel.domains|first.url)
+        })|sw_sanitize }}
+    </p>
+{% endblock %}

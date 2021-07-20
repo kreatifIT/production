@@ -1,0 +1,150 @@
+{
+    "mail": {
+        "base": {
+            "header": "Welcome to AMANUBI"
+        },
+        "customer_register": "%letterName% %firstName% %lastName%,<br> thank you for your signing up with our Shop.<br> You will gain access via the email address <strong>%email%</strong> and the password you have chosen.<br> You can change your password anytime.",
+        "order_confirmation_mail": {
+            "intro": "%letterName% %firstName% %lastName%,<br><br>We have received your order from %orderDate%.<br><br>Order number: %orderNumber%<br><br>As soon as your payment has been made, you will receive a separate notification and your order will be processed.<br><br>You may check the current status of your order with this link: %orderStatusLink%<br>You may use this link to edit your order, change the payment method or make additional payments.<br><br><strong>Information on your order:</strong><br><br>",
+            "products_table": {
+                "product_number": "Prod. no.",
+                "description": "Description",
+                "quantities": "Quantities",
+                "price": "Price",
+                "total": "Total"
+            },
+            "costs": "Shipping costs: %shipping%<br>Net total: %netTotal%",
+            "vat_info": {
+                "plus": "plus",
+                "including": "including",
+                "rate": "%percent%% VAT. %tax%"
+            },
+            "total_gross": "Total gross: %value%",
+            "rounded_total_gross": "Rounded total gross: %value%",
+            "info_labels": {
+                "selected_shipping_type": "Selected shipping type:",
+                "billing_address": "Billing address:",
+                "shipping_address": "Shipping address:"
+            },
+            "vat_id": "Your VAT-ID: %id% In case of a successful order and if you are based in one of the EU countries, you will receive your goods exempt from turnover tax.",
+            "outro": "You can check the current status of your order on our website under \"My account\" - \"My orders\" anytime: %link%<br>If you have any questions, do not hesitate to contact us."
+        },
+        "order_delivery.state.shipped": "%letterName% %firstName% %lastName%,<br><br>the status of your delivery at %salesChannel% (Number: %orderNumber%) on %orderDate% has changed.<br><strong>The new status is as follows: %status%.</strong><br><br>You can check the current status of your order on our website under \"My account\" - \"My orders\" anytime: %link% <br>However, in case you have purchased without a registration or a customer account, you do not have this option.",
+        "order_transaction.state.refunded": "%letterName% %firstName% %lastName%,<br><br>the status of your order at %salesChannel% (Number: %orderNumber%) on %orderDate% has changed.<br><strong>The new status is as follows: %status%.</strong><br><br>You can check the current status of your order on our website under \"My account\" - \"My orders\" anytime: %link%<br>However, in case you have purchased without a registration or a customer account, you do not have this option.",
+        "password_change": "Hello %firstName% %lastName%,<br/><br/>You have requested a new password for your %shopName% account. Click on the following link to reset your password:<br/><br/><a href=\"%link%\">%link%</a><br/><br/>This link will be valid for the next 2 hours. If you do not wish to reset your password, please ignore this email - no change will then be made.<br/><br/>Best regards<br>Your %shopName% team",
+        "order_transaction.state.paid": {
+            "intro": "%letterName% %firstName% %lastName%,<br><br>We received your payment and will now start processing the order.<br>Order number: %orderNumber%<br><br><strong>Information on your order:</strong><br>",
+            "products_table": {
+                "product_number": "Prod. no.",
+                "description": "Description",
+                "quantities": "Quantities",
+                "price": "Price",
+                "total": "Total"
+            },
+            "costs": "Shipping costs: %shipping%<br>Net total: %netTotal%",
+            "vat_info": {
+                "plus": "plus",
+                "including": "including",
+                "rate": "%percent%% VAT. %tax%"
+            },
+            "total_gross": "Total gross: %value%",
+            "rounded_total_gross": "Rounded total gross: %value%",
+            "info_labels": {
+                "selected_shipping_type": "Selected shipping type:",
+                "billing_address": "Billing address:",
+                "shipping_address": "Shipping address:"
+            },
+            "vat_id": "Your VAT-ID: %id% In case of a successful order and if you are based in one of the EU countries, you will receive your goods exempt from turnover tax.",
+            "outro": "You can check the current status of your order on our website under \"My account\" - \"My orders\" anytime: %link%<br>If you have any questions, do not hesitate to contact us."
+        },
+        "newsletterRegister": {
+            "headline": "Hello %firstName% %lastName%",
+            "text1": "thank you very much for your registration.",
+            "text2": "You have successfully subscribed to our newsletter."
+        },
+        "customer.group.registration.accepted": "%letterName% %lastName%,<br><br>Your account has been activated for the customer group %group%.<br>From now on you can shop at the new conditions of this customer group.<br><br>Please do not hesitate to contact us at any time if you have any questions.",
+        "guest_order.double_opt_in": "Hello %displayName% %lastName%,<br><br>Please confirm your email address via the following link:<br><br><a href=\"%url%\">Confirm email</a><br><br>After the confirmation, you will be directed to the checkout, where you can check and complete your order again.<br>By this confirmation, you also agree that we may send you further emails as part of the fulfillment of the contract.",
+        "order.state.cancelled": "%letterName% %firstName% %lastName%,<br><br>the status of your order at %salesChannel% (Number: %orderNumber%) on %orderDate% has changed.<br><strong>The new status is as follows: %status%.</strong><br><br>You can check the current status of your order on our website under \"My account\" - \"My orders\" anytime: %link%<br>However, in case you have purchased without a registration or a customer account, you do not have this option.",
+        "customer.group.registration.declined": "%letterName% %lastName%,<br><br>Thank you for your interest in the conditions for customer group %group%.<br>Unfortunately we cannot activate your account for this customer group.<br><br>If you have any questions, please feel free to contact us by phone or mail.",
+        "order_transaction.state.cancelled": {
+            "intro": "%letterName% %firstName% %lastName%,<br><br>We have received your order on %orderDate%.<br><br>Order number: %orderNumber%.<br><br>You have not completed your payment with %paymentType% yet. You can resume the payment process by using the following URL: %link%<br><br><strong>Information on your order:</strong><br><br>",
+            "products_table": {
+                "product_number": "Prod. no.",
+                "description": "Description",
+                "quantities": "Quantities",
+                "price": "Price",
+                "total": "Total"
+            },
+            "costs": "Shipping costs: %shipping%<br>Net total: %netTotal%",
+            "vat_info": {
+                "plus": "plus",
+                "including": "including",
+                "rate": "%percent%% VAT. %tax%"
+            },
+            "total_gross": "Total gross: %value%",
+            "rounded_total_gross": "Rounded total gross: %value%",
+            "info_labels": {
+                "selected_shipping_type": "Selected shipping type:",
+                "billing_address": "Billing address:",
+                "shipping_address": "Shipping address:"
+            },
+            "vat_id": "Your VAT-ID: %id% In case of a successful order and if you are based in one of the EU countries, you will receive your goods exempt from turnover tax.",
+            "outro": "You can check the current status of your order on our website under \"My account\" - \"My orders\" anytime: %link%<br>If you have any questions, do not hesitate to contact us."
+        },
+        "order_transaction.state.partially_refunded": "%letterName% %firstName% %lastName%,<br><br>the status of your order at %salesChannel% (Number: %orderNumber%) on %orderDate% has changed.<br><strong>The new status is as follows: %status%.</strong><br><br>You can check the current status of your order on our website under \"My account\" - \"My orders\" anytime: %link%<br>However, in case you have purchased without a registration or a customer account, you do not have this option.",
+        "customer_register.double_opt_in": "Hello %displayName% %lastName%,<br><br>thank you for your signing up with %salesChannel%.<br>Please confirm the sign-up via the following link:<br><br><a href=\"%url%\">Completing sign-up</a><br><br>By this confirmation, you also agree that we may send you further emails as part of the fulfillment of the contract.",
+        "order.state.completed": "%letterName% %firstName% %lastName%,<br><br>the status of your order at %salesChannel% (Number: %orderNumber%) on %orderDate% has changed.<br><strong>The new status is as follows: %status%.</strong><br><br>You can check the current status of your order on our website under \"My account\" - \"My orders\" anytime: %link%<br>However, in case you have purchased without a registration or a customer account, you do not have this option.",
+        "order.state.open": "%letterName% %firstName% %lastName%,<br><br>the status of your order at %salesChannel% (Number: %orderNumber%) on %orderDate% has changed.<br><strong>The new status is as follows: %status%.</strong><br><br>You can check the current status of your order on our website under \"My account\" - \"My orders\" anytime: %link%<br>However, in case you have purchased without a registration or a customer account, you do not have this option.",
+        "order.state.in_progress": "%letterName% %firstName% %lastName%,<br><br>the status of your order at %salesChannel% (Number: %orderNumber%) on %orderDate% has changed.<br><strong>The new status is as follows: %status%.</strong><br><br>You can check the current status of your order on our website under \"My account\" - \"My orders\" anytime: %link%<br>However, in case you have purchased without a registration or a customer account, you do not have this option.",
+        "customer_group_change_reject": "%letterName% %lastName%,<br><br>Thank you for your interest in the conditions for customer group %group%.<br>Unfortunately we cannot activate your account for this customer group.<br><br>If you have any questions, please feel free to contact us by phone or mail.",
+        "order_transaction.state.partially_paid": "%letterName% %firstName% %lastName%,<br><br>the status of your order at %salesChannel% (Number: %orderNumber%) on %orderDate% has changed.<br><strong>The new status is as follows: %status%.</strong><br><br>You can check the current status of your order on our website under \"My account\" - \"My orders\" anytime: %link%<br>However, in case you have purchased without a registration or a customer account, you do not have this option.",
+        "order_transaction.state.reminded": "%letterName% %firstName% %lastName%,<br><br>the status of your order at %salesChannel% (Number: %orderNumber%) on %orderDate% has changed.<br><strong>The new status is as follows: %status%.</strong><br><br>You can check the current status of your order on our website under \"My account\" - \"My orders\" anytime: %link%<br>However, in case you have purchased without a registration or a customer account, you do not have this option.",
+        "order_delivery.state.returned_partially": "%letterName% %firstName% %lastName%,<br><br>the status of your delivery at %salesChannel% (Number: %orderNumber%) on %orderDate% has changed.<br><strong>The new status is as follows: %status%.</strong><br><br>You can check the current status of your order on our website under \"My account\" - \"My orders\" anytime: %link% <br>However, in case you have purchased without a registration or a customer account, you do not have this option.",
+        "order_delivery.state.returned": "%letterName% %firstName% %lastName%,<br><br>the status of your delivery at %salesChannel% (Number: %orderNumber%) on %orderDate% has changed.<br><strong>The new status is as follows: %status%.</strong><br><br>You can check the current status of your order on our website under \"My account\" - \"My orders\" anytime: %link% <br>However, in case you have purchased without a registration or a customer account, you do not have this option.",
+        "order_delivery.state.open": "%letterName% %firstName% %lastName%,<br><br>the status of your delivery at %salesChannel% (Number: %orderNumber%) on %orderDate% has changed.<br><strong>The new status is as follows: %status%.</strong><br><br>You can check the current status of your order on our website under \"My account\" - \"My orders\" anytime: %link% <br>However, in case you have purchased without a registration or a customer account, you do not have this option.",
+        "newsletterDoubleOptIn": {
+            "headline": "Hello %firstName% %lastName%",
+            "text": "Thank you for your interest in our newsletter!<br><br>In order to prevent misuse of your email address, we have sent you this confirmation email. Confirm that you wish to receive the newsletter regularly by clicking <a href=\"%url%\">here</a>. If you have not subscribed to the newsletter, please ignore this email."
+        },
+        "order_delivery.state.shipped_partially": "%letterName% %firstName% %lastName%,<br><br>the status of your delivery at %salesChannel% (Number: %orderNumber%) on %orderDate% has changed.<br><strong>The new status is as follows: %status%.</strong><br><br>You can check the current status of your order on our website under \"My account\" - \"My orders\" anytime: %link% <br>However, in case you have purchased without a registration or a customer account, you do not have this option.",
+        "contact_form": "The following Message was sent to you via the contact form.<br><br>Contact name: %firstName% %lastName% Contact email address: %email%<br>Phone: %phone%<br><br>Subject:%subject%<br><br>Message: %comment%<br>",
+        "customer_group_change_accept": "Hello,<br><br>your merchant account at %salesChannel% has been unlocked.<br>From now on, we will charge you the net purchase price.",
+        "user.recovery.request": "Dear %firstName% %lastName%,<br><br>there has been a request to reset your password.Please confirm the link below to specify a new password.<br><br><a href=\"%link%\">Reset passwort</a><br><br>This link is valid for the next 2 hours. After that you have to request a new confirmation link.<br>If you do not want to reset your password, please ignore this email. No changes will be made.",
+        "order_delivery.state.cancelled": "%letterName% %firstName% %lastName%,<br><br>the status of your delivery at %salesChannel% (Number: %orderNumber%) on %orderDate% has changed.<br><strong>The new status is as follows: %status%.</strong><br><br>You can check the current status of your order on our website under \"My account\" - \"My orders\" anytime: %link% <br>However, in case you have purchased without a registration or a customer account, you do not have this option.",
+        "order_transaction.state.open": "%letterName% %firstName% %lastName%,<br><br>the status of your order at %salesChannel% (Number: %orderNumber%) on %orderDate% has changed.<br><strong>The new status is as follows: %status%.</strong><br><br>You can check the current status of your order on our website under \"My account\" - \"My orders\" anytime: %link%<br>However, in case you have purchased without a registration or a customer account, you do not have this option.",
+        "customer.recovery.request": "Dear %firstName% %lastName%,<br><br>there has been a request to reset your password.Please confirm the link below to specify a new password.<br><br><a href=\"%link%\">Reset passwort</a><br><br>This link is valid for the next 2 hours. After that you have to request a new confirmation link.<br>If you do not want to reset your password, please ignore this email. No changes will be made."
+    },
+    "subject": {
+        "base": "| AMANUBI",
+        "contact_form": "Contact form received",
+        "customer.group.registration.accepted": "Customer Group Registration Accepted",
+        "customer.group.registration.declined": "Customer Group Registration Declined",
+        "customer.recovery.request": "Password recovery",
+        "customer_group_change_accept": "Your merchant account has been unlocked",
+        "customer_group_change_reject": "Your trader account has not been accepted",
+        "customer_register": "Your sign-up with %salesChannel%",
+        "customer_register.double_opt_in": "Please confirm your sign-up with %salesChannel%",
+        "newsletterDoubleOptIn": "Newsletter",
+        "newsletterRegister": "Register",
+        "order.state.cancelled": "Your order with %salesChannel% is cancelled",
+        "order.state.completed": "Your order with %salesChannel% is completed",
+        "order.state.in_progress": "Your order with %salesChannel% is in process",
+        "order.state.open": "Your order with %salesChannel% is open",
+        "order_confirmation_mail": "Order confirmation",
+        "order_delivery.state.cancelled": "Your order with %salesChannel% is cancelled",
+        "order_delivery.state.shipped": "Your order with %salesChannel% is delivered",
+        "order_delivery.state.open": "Your order with %salesChannel% is partially returned",
+        "order_delivery.state.returned": "Your order with %salesChannel% is returned",
+        "order_delivery.state.returned_partially": "Your order with %salesChannel% is partially refunded",
+        "order_delivery.state.shipped_partially": "Your order with %salesChannel% is partially delivered",
+        "order_transaction.state.cancelled": "The payment for your order with %salesChannel% is cancelled",
+        "order_transaction.state.open": "Your payment with %salesChannel% is open",
+        "order_transaction.state.paid": "Your order with %salesChannel% is completely paid",
+        "order_transaction.state.paid_partially": "Your order with %salesChannel% is partially paid",
+        "order_transaction.state.refunded": "Your order with %salesChannel% is refunded",
+        "order_transaction.state.refunded_partially": "Your order with %salesChannel% is partially refunded",
+        "order_transaction.state.reminded": "Reminder for your order with %salesChannel%",
+        "password_change": "Password reset",
+        "user.recovery.request": "Password recovery"
+    }
+}

@@ -1,0 +1,192 @@
+{% sw_extends '@Storefront/email/base.html.twig' %}
+
+{% block content %}
+
+
+    {% set currencyIsoCode = order.currency.isoCode %}
+    <p>
+        {{ "mail.order_transaction.state.paid.intro"|trans({
+            '%letterName%': order.orderCustomer.salutation.translated.letterName,
+            '%firstName%': order.orderCustomer.firstName,
+            '%lastName%': order.orderCustomer.lastName,
+            '%orderNumber%': order.orderNumber,
+        })|sw_sanitize }}
+
+
+    <table border="0" style="font-family:Arial, Helvetica, sans-serif; font-size:12px;">
+        <tr>
+            <td bgcolor="#F7F7F2" style="border-bottom:1px solid #cccccc;">
+                <strong>
+                    {{ "mail.order_transaction.state.paid.products_table.product_number"|trans()|sw_sanitize }}
+                </strong>
+            </td>
+            <td bgcolor="#F7F7F2" style="border-bottom:1px solid #cccccc;">
+                <strong>
+                    {{ "mail.order_transaction.state.paid.products_table.description"|trans()|sw_sanitize }}
+                </strong>
+            </td>
+            <td bgcolor="#F7F7F2" style="border-bottom:1px solid #cccccc;">
+                <strong>
+                    {{ "mail.order_transaction.state.paid.products_table.quantities"|trans()|sw_sanitize }}
+                </strong>
+            </td>
+            <td bgcolor="#F7F7F2" style="border-bottom:1px solid #cccccc;">
+                <strong>
+                    {{ "mail.order_transaction.state.paid.products_table.price"|trans()|sw_sanitize }}
+                </strong>
+            </td>
+            <td bgcolor="#F7F7F2" style="border-bottom:1px solid #cccccc;">
+                <strong>
+                    {{ "mail.order_transaction.state.paid.products_table.total"|trans()|sw_sanitize }}
+                </strong>
+            </td>
+        </tr>
+
+        {% for lineItem in order.nestedLineItems %}
+            {% set nestingLevel = 0 %}
+            {% set nestedItem = lineItem %}
+            {% block lineItem %}
+                <tr>
+                    <td>{% if nestedItem.payload.productNumber is defined %}{{ nestedItem.payload.productNumber|u.wordwrap(80) }}{% endif %}</td>
+                    <td>
+                        {% if nestingLevel > 0 %}
+                            {% for i in 1..nestingLevel %}
+                                <span style="position: relative;">
+                                <span style="display: inline-block;
+                                    position: absolute;
+                                    width: 6px;
+                                    height: 20px;
+                                    top: 0;
+                                    border-left:  2px solid rgba(0, 0, 0, 0.15);
+                                    margin-left: {{ i * 10 }}px;"></span>
+                            </span>
+                            {% endfor %}
+                        {% endif %}
+
+                        <div{% if nestingLevel > 0 %} style="padding-left: {{ (nestingLevel + 1) * 10 }}px"{% endif %}>
+                            {{ nestedItem.label|u.wordwrap(80) }}
+                        </div>
+
+                        {% if nestedItem.payload.options is defined and nestedItem.payload.options|length >= 1 %}
+                            <div>
+                                {% for option in nestedItem.payload.options %}
+                                    {{ option.group }}: {{ option.option }}
+                                    {% if nestedItem.payload.options|last != option %}
+                                        {{ " | " }}
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+
+                        {% if nestedItem.payload.features is defined and nestedItem.payload.features|length >= 1 %}
+                            {% set referencePriceFeatures = nestedItem.payload.features|filter(feature => feature.type == 'referencePrice') %}
+                            {% if referencePriceFeatures|length >= 1 %}
+                                {% set referencePriceFeature = referencePriceFeatures|first %}
+                                <div>
+                                    {{ referencePriceFeature.value.purchaseUnit }} {{ referencePriceFeature.value.unitName }}
+                                    ({{ referencePriceFeature.value.price|currency(currencyIsoCode) }}*
+                                    / {{ referencePriceFeature.value.referenceUnit }} {{ referencePriceFeature.value.unitName }})
+                                </div>
+                            {% endif %}
+                        {% endif %}
+                    </td>
+                    <td style="text-align: center">{{ nestedItem.quantity }}</td>
+                    <td>{{ nestedItem.unitPrice|currency(currencyIsoCode) }}</td>
+                    <td>{{ nestedItem.totalPrice|currency(currencyIsoCode) }}</td>
+                </tr>
+
+                {% if nestedItem.children.count > 0 %}
+                    {% set nestingLevel = nestingLevel + 1 %}
+                    {% for lineItem in nestedItem.children %}
+                        {% set nestedItem = lineItem %}
+                        {{ block('lineItem') }}
+                    {% endfor %}
+                {% endif %}
+            {% endblock %}
+        {% endfor %}
+    </table>
+
+    {% set delivery = order.deliveries.first %}
+
+    {% set displayRounded = order.totalRounding.interval != 0.01 or order.totalRounding.decimals != order.itemRounding.decimals %}
+    {% set decimals = order.totalRounding.decimals %}
+    {% set total = order.price.totalPrice %}
+    {% if displayRounded %}
+        {% set total = order.price.rawTotal %}
+        {% set decimals = order.itemRounding.decimals %}
+    {% endif %}
+    <p>
+        <br>
+        <br>
+        {{ "mail.order_transaction.state.paid.costs"|trans({
+            '%shipping%': order.deliveries.first.shippingCosts.totalPrice|currency(currencyIsoCode),
+            '%netTotal%': order.amountNet|currency(currencyIsoCode)
+        })|sw_sanitize }}
+        <br>
+        {% for calculatedTax in order.price.calculatedTaxes %}
+            {% if order.taxStatus is same as('net') %}
+                {{ "mail.order_transaction.state.paid.vat_info.plus"|trans()|sw_sanitize }}
+            {% else %}
+                {{ "mail.order_transaction.state.paid.vat_info.including"|trans()|sw_sanitize }}
+            {% endif %}
+            {{ "mail.order_transaction.state.paid.vat_info.rate"|trans({
+                '%percent%': calculatedTax.taxRate,
+                '%tax%': calculatedTax.tax|currency(currencyIsoCode)
+            })|sw_sanitize }}
+            <br>
+        {% endfor %}
+
+        {% if not displayRounded %}<strong>{% endif %}
+            {{ "mail.order_transaction.state.paid.total_gross"|trans({
+                '%value%': total|currency(currencyIsoCode,decimals=decimals),
+            })|sw_sanitize }}
+            {% if not displayRounded %}</strong>{% endif %}<br>
+        {% if displayRounded %}
+            <strong>
+                {{ "mail.order_transaction.state.paid.total_gross"|trans({
+                    '%value%': order.price.totalPrice|currency(currencyIsoCode,decimals=order.totalRounding.decimals)
+                })|sw_sanitize }}
+            </strong><br>
+        {% endif %}
+        <br>
+
+        <strong>
+            {{ "mail.order_transaction.state.paid.info_labels.selected_shipping_type"|trans()|sw_sanitize }}
+        </strong> {{ delivery.shippingMethod.translated.name }}<br>
+        {{ delivery.shippingMethod.translated.description }}<br>
+        <br>
+
+        {% set billingAddress = order.addresses.get(order.billingAddressId) %}
+        <strong>
+            {{ "mail.order_transaction.state.paid.info_labels.billing_address"|trans()|sw_sanitize }}
+        </strong><br>
+        {{ billingAddress.company }}<br>
+        {{ billingAddress.firstName }} {{ billingAddress.lastName }}<br>
+        {{ billingAddress.street }} <br>
+        {{ billingAddress.zipcode }} {{ billingAddress.city }}<br>
+        {{ billingAddress.country.translated.name }}<br>
+        <br>
+
+        <strong>
+            {{ "mail.order_transaction.state.paid.info_labels.shipping_address"|trans()|sw_sanitize }}
+        </strong><br>
+        {{ delivery.shippingOrderAddress.company }}<br>
+        {{ delivery.shippingOrderAddress.firstName }} {{ delivery.shippingOrderAddress.lastName }}<br>
+        {{ delivery.shippingOrderAddress.street }} <br>
+        {{ delivery.shippingOrderAddress.zipcode }} {{ delivery.shippingOrderAddress.city }}<br>
+        {{ delivery.shippingOrderAddress.country.translated.name }}<br>
+        <br>
+        {% if order.orderCustomer.vatIds %}
+            {{ "mail.order_transaction.state.paid.vat_id"|trans({
+                '%id%':  order.orderCustomer.vatIds|first
+            })|sw_sanitize }}
+            <br>
+        {% endif %}
+        <br/>
+        {{ "mail.order_transaction.state.paid.outro"|trans({
+            '%link%':  rawUrl('frontend.account.order.single.page', { 'deepLinkCode': order.deepLinkCode }, salesChannel.domains|first.url)
+        })|sw_sanitize }}
+    </p>
+    <br>
+{% endblock %}
+

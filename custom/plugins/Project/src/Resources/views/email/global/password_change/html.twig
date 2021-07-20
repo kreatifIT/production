@@ -1,0 +1,12 @@
+{% sw_extends '@Storefront/email/base.html.twig' %}
+
+{% block content %}
+    <p>
+        {{ "mail.password_change"|trans({
+            '%firstName%': customerRecovery.customer.firstName,
+            '%lastName%': customerRecovery.customer.lastName,
+            '%shopName%': shopName,
+            '%link%': resetUrl
+        })|sw_sanitize }}
+    </p>
+{% endblock %}

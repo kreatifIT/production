@@ -1,0 +1,18 @@
+{% sw_extends '@Storefront/email/base.html.twig' %}
+
+{% block content %}
+    <p>
+    <h3>
+        {{ "mail.newsletterDoubleOptIn.headline"|trans({
+            '%firstName%':  newsletterRecipient.firstName,
+            '%lastName%': newsletterRecipient.lastName,
+        })|sw_sanitize }}
+    </h3>
+    <p>
+        {{ "mail.newsletterDoubleOptIn.text"|trans({
+            '%url%': url
+        })|sw_sanitize }}
+    </p>
+
+    </p>
+{% endblock %}

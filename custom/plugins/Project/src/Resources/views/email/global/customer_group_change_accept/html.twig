@@ -1,0 +1,9 @@
+{% sw_extends '@Storefront/email/base.html.twig' %}
+
+{% block content %}
+    <p>
+        {{ "mail.customer_group_change_accept"|trans({
+            '%salesChannel': salesChannel.name
+        })|sw_sanitize }}
+    </p>
+{% endblock %}

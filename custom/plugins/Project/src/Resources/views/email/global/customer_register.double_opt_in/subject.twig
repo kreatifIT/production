@@ -1,0 +1,4 @@
+{% sw_extends '@Storefront/email/base.subject.twig' %}
+
+{% block content %}{{ "subject.customer_register.double_opt_in"|trans({'%salesChannel%': salesChannel.translated.name }) }}{% endblock %}
+

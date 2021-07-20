@@ -1,0 +1,11 @@
+{% sw_extends '@Storefront/email/base.html.twig' %}
+
+{% block content %}
+    <br/>
+    <p>
+        {{ "mail.customer_group_change_reject"|trans({
+            '%letterName%': customer.salutation.letterName,
+            '%lastName%': customer.lastName,
+            '%group%': customerGroup.translated.name })|sw_sanitize }}
+    </p>
+{% endblock %}

@@ -1,3 +1,7 @@
+FcgidWrapper "/home/httpd/cgi-bin/php74-fcgi-starter.fcgi" .php
+Action application/x-httpd-php74 /cgi-sys/php74-fcgi-starter.fcgi
+AddType application/x-httpd-php74 .php
+
 DirectoryIndex index.html index.php
 
 <IfModule mod_negotiation.c>

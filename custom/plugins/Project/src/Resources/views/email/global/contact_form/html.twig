@@ -1,0 +1,15 @@
+{% sw_extends '@Storefront/email/base.html.twig' %}
+
+{% block content %}
+    <br/>
+    <p>
+        {{ "mail.contact_form"|trans({
+            '%firstName%': contactFormData.firstName,
+            '%lastName%': contactFormData.lastName,
+            '%email%': contactFormData.email,
+            '%phone%': contactFormData.phone,
+            '%subject%': contactFormData.subject,
+            '%comment%': contactFormData.comment,
+        })|sw_sanitize }}
+    </p>
+{% endblock %}

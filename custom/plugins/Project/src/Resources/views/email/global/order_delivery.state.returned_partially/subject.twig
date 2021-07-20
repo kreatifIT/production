@@ -1,0 +1,4 @@
+{% sw_extends '@Storefront/email/base.subject.twig' %}
+
+{% block content %}{{ "subject.order_delivery.state.returned_partially"|trans({'%salesChannel%': salesChannel.name }) }}{% endblock %}
+

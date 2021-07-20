@@ -1,6 +1,7 @@
-custom/*
-!custom/plugins/.gitkeep
-!custom/static-plugins/
+!custom/plugins/KreatifSW/*
+!custom/plugins/Project/*
+!custom/plugins/FroshPlatformTemplateMail/*
+
 
 /vendor/
 /bin/vendor/
@@ -37,7 +38,6 @@ custom/*
 /platform/
 /repos/
 
-.env
 
 .cache/
 
@@ -48,3 +48,5 @@ custom/*
 !/var/cache/.gitkeep
 !/var/queue/.gitkeep
 !/var/test/.gitkeep
+
+

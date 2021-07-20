@@ -1,0 +1,20 @@
+{% sw_extends '@Storefront/email/base.html.twig' %}
+
+{% block content %}
+    <h3>
+        {{ "mail.newsletterRegister.headline"|trans({
+            '%firstName%': newsletterRecipient.firstName,
+            '%lastName%': newsletterRecipient.lastName
+        }) }}
+    </h3>
+    <p>
+        {{ "mail.newsletterRegister.text1"|trans() }}
+    </p>
+    <p>
+        {{ "mail.newsletterRegister.text2"|trans() }}
+    </p>
+{% endblock %}
+
+
+
+

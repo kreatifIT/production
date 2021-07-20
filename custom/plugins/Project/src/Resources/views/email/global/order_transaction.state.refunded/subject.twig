@@ -1,0 +1,4 @@
+{% sw_extends '@Storefront/email/base.subject.twig' %}
+
+{% block content %}{{ "subject.order_transaction.state.refunded"|trans({'%salesChannel%': salesChannel.name }) }}{% endblock %}
+
