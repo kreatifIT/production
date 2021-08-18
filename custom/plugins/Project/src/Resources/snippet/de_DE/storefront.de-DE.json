@@ -1,7 +1,7 @@
 {
     "mail": {
         "base": {
-            "header": "Willkommen bei AMANUBI"
+            "header": "Willkommen"
         },
         "customer_register": "Hallo %firstName%,<br>Vielen Dank für deine Anmeldung in unserem Shop.<br> Du erhältst Zugriff über deine E-Mail-Adresse <strong>%email%</strong> und den von dir gewählten Kennwort.<br> Du kannst dein Kennwort jederzeit nachträglich ändern.",
         "order_confirmation_mail": {
