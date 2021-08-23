@@ -115,7 +115,7 @@
         "order_delivery.state.cancelled": "%letterName% %firstName% %lastName%,<br><br>lo stato di consegna del tuo ordine su %salesChannel% (Numero: %orderNumber%) da %orderDate% è cambiato.<br><strong>L'ordine ha ora lo stato di consegna: %status%. </strong><br><br>Puoi anche controllare lo stato attuale del tuo ordine in qualsiasi momento sul nostro sito web nella sezione \"Il mio account\" - \"I miei ordini\": %link%<br>Tuttavia, se hai scelto di acquistare senza registrarti, cioè senza creare un account cliente, questa opzione non è disponibile per te"
     },
     "subject": {
-        "base": "| AMANUBI",
+        "base": "",
         "contact_form": "Richiesta di contatto ricevuta",
         "customer.group.registration.accepted": "Customer Group Registration Accepted",
         "customer.group.registration.declined": "Customer Group Registration Declinato",
