@@ -1,4 +1,18 @@
 {
+    "product": {
+        "list": {
+            "quickview": "Schnellansicht",
+            "detail": "Detail"
+        },
+        "detail": {
+            "description": "Beschreibung",
+            "usage": "Anwendung",
+            "extracts": "Wichtigste Naturextrakte",
+            "crossSelling": {
+                "headline": "Andere Produkte in der gleichen Kategorie"
+            }
+        }
+    },
     "mail": {
         "base": {
             "header": "Willkommen"

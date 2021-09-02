@@ -1,4 +1,18 @@
 {
+    "product": {
+        "list": {
+            "quickview": "Vista rapida",
+            "detail": "Dettaglio"
+        },
+        "detail": {
+            "description": "Descrizione",
+            "usage": "Modo d'uso",
+            "extracts": "Principali estratti naturali",
+            "crossSelling": {
+                "headline": "Andere Produkte in der gleichen Kategorie"
+            }
+        }
+    },
     "mail": {
         "base": {
             "header": "Benvenuto"

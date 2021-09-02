@@ -1,3 +1,7 @@
+FcgidWrapper "/home/httpd/cgi-bin/php74-fcgi-starter.fcgi" .php
+Action application/x-httpd-php74 /cgi-sys/php74-fcgi-starter.fcgi
+AddType application/x-httpd-php74 .php
+
 # BEGIN Shopware
 # The directives (lines) between "# BEGIN Shopware" and "# END Shopware" are dynamically generated. Any changes to the directives between these markers will be overwritten.
 
