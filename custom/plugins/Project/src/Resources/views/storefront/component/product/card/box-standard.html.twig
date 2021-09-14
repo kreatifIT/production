@@ -62,13 +62,13 @@
 
                                 <div class="product-quick-actions">
                                     {% block component_product_box_quickview_action %}
-                                        <a href="{{ seoUrl('frontend.detail.page',
-                                            {'productId': id}) }}"
-                                           data-toggle="tooltip" data-placement="top"
-                                           data-offset="0,4"
-                                           data-productId="{{ id }}"
-                                           class="product-quick-view pjax-product-quickview"
-                                           onclick="KreatifScript.functions.productQuickView(this,'{{ id }}'); return false;">
+                                        <a href="{{ seoUrl('frontend.detail.page', {'productId': id}) }}"
+                                           class="product-quick-view"
+                                           title="{{ name }}"
+                                                data-toggle="modal"
+                                                data-modal-class="quickview-modal"
+                                                data-url="{{ path('widgets.quickview.minimal',{ 'productId': id }) }}"
+                                        >
                                             {% sw_icon 'rocket' %}
                                         </a>
                                     {% endblock %}
