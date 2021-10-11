@@ -60,13 +60,35 @@
                                     {% endif %}
                                 </a>
 
+                                <div class="product-quick-actions">
+                                    {% block component_product_box_quickview_action %}
+                                        <a href="{{ seoUrl('frontend.detail.page', {'productId': id}) }}"
+                                           class="product-quick-view"
+                                           title="{{ name }}"
+                                                data-toggle="modal"
+                                                data-modal-class="quickview-modal"
+                                                data-url="{{ path('widgets.quickview.minimal',{ 'productId': id }) }}"
+                                        >
+                                            {% sw_icon 'rocket' %}
+                                        </a>
+                                    {% endblock %}
+
+                                    {% if config('core.cart.wishlistEnabled') %}
+                                        {% block component_product_box_wishlist_action %}
+                                            {% sw_include '@Storefront/storefront/component/product/card/wishlist.html.twig' with {
+                                                appearance: 'circle',
+                                                productId: id
+                                            } %}
+                                        {% endblock %}
+                                    {% endif %}
+                                </div>
                             </div>
                         {% endblock %}
 
                         {% block component_product_box_info %}
                             <div class="product-info">
                                 {% block component_product_box_rating %}
-                                    {% if config('core.listing.showReview') %}
+                                    {% if config('core.listing.showReview') and product.ratingAverage %}
                                         <div class="product-rating">
                                             {% if product.ratingAverage %}
                                                 {% sw_include '@Storefront/storefront/component/review/rating.html.twig' with {
@@ -77,23 +99,6 @@
                                         </div>
                                     {% endif %}
                                 {% endblock %}
-
-                                <div class="product-link-box">
-                                    <a href="{{ seoUrl('frontend.detail.page', {'productId': id}) }}">
-                                        {{ 'product.list.detail'|trans|sw_sanitize }}
-                                    </a>
-
-                                    {% block component_product_box_quickview_action %}
-                                        <a href="{{ seoUrl('frontend.detail.page', {'productId': id}) }}"
-                                           data-toggle="tooltip" data-placement="top"
-                                           data-offset="0,4"
-                                           data-productId="{{ id }}"
-                                           class="product-quick-view pjax-product-quickview"
-                                           onclick="KreatifScript.functions.productQuickView(this,'{{ id }}'); return false;">
-                                            {{ 'product.list.quickview'|trans|sw_sanitize }}
-                                        </a>
-                                    {% endblock %}
-                                </div>
 
                                 {% block component_product_box_name %}
                                     <a href="{{ seoUrl('frontend.detail.page', {'productId': id}) }}"
