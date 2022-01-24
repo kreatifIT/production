@@ -13,7 +13,7 @@ if [[ ${CI} ]]; then
 fi
 
 # build storefront
-[[ ${SHOPWARE_SKIP_BUNDLE_DUMP} ]] || "${BIN_TOOL}" bundle:dump
+[[ ${SHOPWARE_SKIP_BUNDLE_DUMP} ]] || php74 "${BIN_TOOL}" bundle:dump
 
 if [[ $(command -v jq) ]]; then
     OLDPWD=$(pwd)
@@ -44,5 +44,5 @@ fi
 npm --prefix "${STOREFRONT_ROOT}"/Resources/app/storefront clean-install
 node "${STOREFRONT_ROOT}"/Resources/app/storefront/copy-to-vendor.js
 npm --prefix "${STOREFRONT_ROOT}"/Resources/app/storefront run production
-[[ ${SHOPWARE_SKIP_ASSET_COPY} ]] ||"${BIN_TOOL}" asset:install
-[[ ${SHOPWARE_SKIP_THEME_COMPILE} ]] || "${BIN_TOOL}" theme:compile
+[[ ${SHOPWARE_SKIP_ASSET_COPY} ]] || php74 "${BIN_TOOL}" asset:install
+[[ ${SHOPWARE_SKIP_THEME_COMPILE} ]] || php74 "${BIN_TOOL}" theme:compile
