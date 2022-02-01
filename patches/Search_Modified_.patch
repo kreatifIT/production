@@ -1,0 +1,120 @@
+Index: vendor/shopware/core/Content/Product/SalesChannel/Suggest/ProductSuggestRoute.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/vendor/shopware/core/Content/Product/SalesChannel/Suggest/ProductSuggestRoute.php b/vendor/shopware/core/Content/Product/SalesChannel/Suggest/ProductSuggestRoute.php
+--- a/vendor/shopware/core/Content/Product/SalesChannel/Suggest/ProductSuggestRoute.php	(revision b9eaab28aa72e2e13bf9a81b0dccc76c597e8da1)
++++ b/vendor/shopware/core/Content/Product/SalesChannel/Suggest/ProductSuggestRoute.php	(date 1643731051904)
+@@ -115,7 +115,35 @@
+             ProductEvents::PRODUCT_SUGGEST_CRITERIA
+         );
+ 
+-        $result = $this->productListingLoader->load($criteria, $context);
++        $searchTerms         = explode(' ', $request->get('search'));
++        $filterName          = [];
++        $filterProdcutNumber = [];
++        $filterEan           = [];
++
++        if (count($searchTerms) > 1) {
++            foreach ($searchTerms as $searchTerm) {
++                $filterName[]          = new ContainsFilter('product.name', $searchTerm);
++                $filterProdcutNumber[] = new ContainsFilter('product.productNumber', $searchTerm);
++                $filterEan[]           = new ContainsFilter('product.ean', $searchTerm);
++            }
++            $_filterName   = new MultiFilter(MultiFilter::CONNECTION_AND, $filterName);
++            $_filterNumber = new MultiFilter(MultiFilter::CONNECTION_OR, $filterProdcutNumber);
++            $_filterEan    = new MultiFilter(MultiFilter::CONNECTION_OR, $filterEan);
++
++            $criteria->addFilter(new MultiFilter(MultiFilter::CONNECTION_OR, [$_filterName, $_filterNumber, $_filterEan]));
++        } else {
++            $searchTerm          = current($searchTerms);
++            $filterName          = new ContainsFilter('product.name', $searchTerm);
++            $filterProdcutNumber = new ContainsFilter('product.productNumber', $searchTerm);
++            $filterEan           = new ContainsFilter('product.ean', $searchTerm);
++
++            $criteria->addFilter(new MultiFilter(MultiFilter::CONNECTION_OR, [$filterName, $filterProdcutNumber,$filterEan]));
++        }
++
++        $criteria->resetSorting();
++        $criteria->setTerm($request->get('search'));
++
++        // $this->searchBuilder->build($request, $criteria, $context);
+ 
+         $result = ProductListingResult::createFrom($result);
+ 
+Index: vendor/shopware/core/Content/Product/SalesChannel/Search/ProductSearchRoute.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/vendor/shopware/core/Content/Product/SalesChannel/Search/ProductSearchRoute.php b/vendor/shopware/core/Content/Product/SalesChannel/Search/ProductSearchRoute.php
+--- a/vendor/shopware/core/Content/Product/SalesChannel/Search/ProductSearchRoute.php	(revision b9eaab28aa72e2e13bf9a81b0dccc76c597e8da1)
++++ b/vendor/shopware/core/Content/Product/SalesChannel/Search/ProductSearchRoute.php	(date 1643731000407)
+@@ -90,7 +90,34 @@
+             new ProductAvailableFilter($context->getSalesChannel()->getId(), ProductVisibilityDefinition::VISIBILITY_SEARCH)
+         );
+ 
+-        $this->searchBuilder->build($request, $criteria, $context);
++        $searchTerms         = explode(' ', $request->get('search'));
++        $filterName          = [];
++        $filterProdcutNumber = [];
++        $filterEan           = [];
++
++        if (count($searchTerms) > 1) {
++            foreach ($searchTerms as $searchTerm) {
++                $filterName[]          = new ContainsFilter('product.name', $searchTerm);
++                $filterProdcutNumber[] = new ContainsFilter('product.productNumber', $searchTerm);
++                $filterEan[]           = new ContainsFilter('product.ean', $searchTerm);
++            }
++            $_filterName   = new MultiFilter(MultiFilter::CONNECTION_AND, $filterName);
++            $_filterNumber = new MultiFilter(MultiFilter::CONNECTION_OR, $filterProdcutNumber);
++            $_filterEan    = new MultiFilter(MultiFilter::CONNECTION_OR, $filterEan);
++
++            $criteria->addFilter(new MultiFilter(MultiFilter::CONNECTION_OR, [$_filterName, $_filterNumber, $_filterEan]));
++        } else {
++            $searchTerm          = current($searchTerms);
++            $filterName          = new ContainsFilter('product.name', $searchTerm);
++            $filterProdcutNumber = new ContainsFilter('product.productNumber', $searchTerm);
++            $filterEan           = new ContainsFilter('product.ean', $searchTerm);
++            $criteria->addFilter(new MultiFilter(MultiFilter::CONNECTION_OR, [$filterName, $filterProdcutNumber,$filterEan]));
++        }
++
++        $criteria->resetSorting();
++        $criteria->setTerm((string)$request->get('search'));
++
++        // $this->searchBuilder->build($request, $criteria, $context);
+ 
+         $result = $this->productListingLoader->load($criteria, $context);
+ 
+Index: vendor/shopware/storefront/Controller/SearchController.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/vendor/shopware/storefront/Controller/SearchController.php b/vendor/shopware/storefront/Controller/SearchController.php
+--- a/vendor/shopware/storefront/Controller/SearchController.php	(revision b9eaab28aa72e2e13bf9a81b0dccc76c597e8da1)
++++ b/vendor/shopware/storefront/Controller/SearchController.php	(date 1643731019736)
+@@ -55,14 +55,14 @@
+     {
+         try {
+             $page = $this->searchPageLoader->load($request, $context);
+-            if ($page->getListing()->getTotal() === 1) {
+-                $product = $page->getListing()->first();
+-                if ($request->get('search') === $product->getProductNumber()) {
+-                    $productId = $product->getId();
+-
+-                    return $this->forwardToRoute('frontend.detail.page', [], ['productId' => $productId]);
+-                }
+-            }
++//            if ($page->getListing()->getTotal() === 1) {
++//                $product = $page->getListing()->first();
++//                if ($request->get('search') === $product->getProductNumber()) {
++//                    $productId = $product->getId();
++//
++//                    return $this->forwardToRoute('frontend.detail.page', [], ['productId' => $productId]);
++//                }
++//            }
+         } catch (MissingRequestParameterException $missingRequestParameterException) {
+             return $this->forwardToRoute('frontend.home.page');
+         }
