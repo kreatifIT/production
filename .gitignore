@@ -22,7 +22,7 @@
 !/public/js/.gitkeep
 /public/media/*
 !/public/media/.gitkeep
-/public/theme/*
+!/public/theme/*
 !/public/theme/.gitkeep
 /public/thumbnail/*
 !/public/thumbnail/.gitkeep
