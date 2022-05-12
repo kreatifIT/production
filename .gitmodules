@@ -1,3 +1,6 @@
 [submodule "custom/plugins/KreatifSW"]
 	path = custom/plugins/KreatifSW
 	url = git@bitbucket.org:kreatifbz/kreatifsw.git
+[submodule "custom/plugins/KreatifWishlist"]
+	path = custom/plugins/KreatifWishlist
+	url = git@bitbucket.org:kreatifbz/kreatifwishlist.git
