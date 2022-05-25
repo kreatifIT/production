@@ -39,8 +39,8 @@
 /repos/
 
 
-.cache/ 
-.env
+.cache/
+#.env
 .envrc
 
 /var/*
