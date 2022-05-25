@@ -40,7 +40,7 @@
 
 
 .cache/
-#.env
+.env
 .envrc
 
 /var/*
