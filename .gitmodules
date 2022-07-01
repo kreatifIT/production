@@ -7,3 +7,6 @@
 [submodule "custom/plugins/KreatifLoginRedirect"]
 	path = custom/plugins/KreatifLoginRedirect
 	url = git@bitbucket.org:kreatifbz/kreatifloginredirect.git
+[submodule "custom/plugins/SwagPayPal"]
+	path = custom/plugins/SwagPayPal
+	url = git@github.com:kreatifIT/SwagPayPal.git
