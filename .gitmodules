@@ -10,3 +10,7 @@
 [submodule "custom/plugins/SwagPayPal"]
 	path = custom/plugins/SwagPayPal
 	url = git@github.com:kreatifIT/SwagPayPal.git
+[submodule "custom/plugins/OLCService"]
+	path = custom/plugins/OLCService
+	url = git@bitbucket.org:kreatifbz/olc-service.git
+
