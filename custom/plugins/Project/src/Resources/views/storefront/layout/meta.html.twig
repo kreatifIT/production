@@ -9,19 +9,19 @@
     <head>
         {% block layout_head_meta_tags %}
             {% block layout_head_meta_tags_charset %}
-                <meta charset="utf-8">
+{#                <meta charset="utf-8">#}
             {% endblock %}
 
             {% block layout_head_meta_tags_viewport %}
-                <meta name="viewport"
-                      content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{#                <meta name="viewport"#}
+{#                      content="width=device-width, initial-scale=1, shrink-to-fit=no">#}
             {% endblock %}
 
             {% block layout_head_meta_tags_general %}
                 <meta name="author"
                       content="{% block layout_head_meta_tags_general_author %}{{ metaInformation.author|striptags }}{% endblock %}"/>
-                <meta name="robots"
-                      content="{% block layout_head_meta_tags_robots %}{{ metaInformation.robots }}{% endblock %}"/>
+{#                <meta name="robots"#}
+{#                      content="{% block layout_head_meta_tags_robots %}{{ metaInformation.robots }}{% endblock %}"/>#}
                 <meta name="revisit-after"
                       content="{% block layout_head_meta_tags_general_revisit %}{{ metaInformation.revisit|striptags }}{% endblock %}"/>
                 <meta name="keywords"
@@ -73,22 +73,22 @@
         {% endblock %}
 
         {% block layout_head_favicon %}
-            <link rel="shortcut icon"
-                  href="{{ theme_config('sw-logo-favicon') }}">
+{#            <link rel="shortcut icon"#}
+{#                  href="{{ theme_config('sw-logo-favicon') }}">#}
         {% endblock %}
 
         {% block layout_head_apple %}
-            <link rel="apple-touch-icon"
-                  sizes="180x180"
-                  href="{{ theme_config('sw-logo-share') }}">
+{#            <link rel="apple-touch-icon"#}
+{#                  sizes="180x180"#}
+{#                  href="{{ theme_config('sw-logo-share') }}">#}
         {% endblock %}
 
         {% block layout_head_android %}
-            <link rel="icon"
-                  sizes="192x192"
-                  href="{{ theme_config('sw-logo-share') }}">
-            <meta name="theme-color"
-                  content="{{ theme_config('sw-color-brand-primary') }}"/>
+{#            <link rel="icon"#}
+{#                  sizes="192x192"#}
+{#                  href="{{ theme_config('sw-logo-share') }}">#}
+{#            <meta name="theme-color"#}
+{#                  content="{{ theme_config('sw-color-brand-primary') }}"/>#}
         {% endblock %}
 
         {% block layout_head_canonical %}
