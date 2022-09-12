@@ -14,3 +14,6 @@
 	path = custom/plugins/OLCService
 	url = git@bitbucket.org:kreatifbz/olc-service.git
 
+[submodule "custom/plugins/MolliePayments"]
+	path = custom/plugins/MolliePayments
+	url = git@bitbucket.org:kreatifbz/molliepayments.git
