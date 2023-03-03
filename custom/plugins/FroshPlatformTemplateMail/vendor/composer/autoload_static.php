@@ -4,17 +4,13 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInite549432a590b4a4b91476507122f2e30
+class ComposerStaticInit6077dd9a0eeb110de38fd5e9bd9633f3
 {
     public static $files = array (
         'c899bf3d7cf083b79d5e2b2575ed07d5' => __DIR__ . '/..' . '/lorenzo/pinky/src/pinky.php',
     );
 
     public static $prefixLengthsPsr4 = array (
-        'P' => 
-        array (
-            'PhpParser\\' => 10,
-        ),
         'F' => 
         array (
             'Frosh\\TemplateMail\\' => 19,
@@ -22,21 +18,39 @@ class ComposerStaticInite549432a590b4a4b91476507122f2e30
     );
 
     public static $prefixDirsPsr4 = array (
-        'PhpParser\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
-        ),
         'Frosh\\TemplateMail\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),
     );
 
+    public static $classMap = array (
+        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'Frosh\\TemplateMail\\Command\\ExportCommand' => __DIR__ . '/../..' . '/src/Command/ExportCommand.php',
+        'Frosh\\TemplateMail\\DependencyInjection\\CacheCompilerPass' => __DIR__ . '/../..' . '/src/DependencyInjection/CacheCompilerPass.php',
+        'Frosh\\TemplateMail\\Event\\TemplateMailBusinessEvent' => __DIR__ . '/../..' . '/src/Event/TemplateMailBusinessEvent.php',
+        'Frosh\\TemplateMail\\Exception\\MjmlCompileError' => __DIR__ . '/../..' . '/src/Exception/MjmlCompileError.php',
+        'Frosh\\TemplateMail\\Extension\\Content\\MailTemplate\\MailTemplateExtension' => __DIR__ . '/../..' . '/src/Extension/Content/MailTemplate/MailTemplateExtension.php',
+        'Frosh\\TemplateMail\\FroshPlatformTemplateMail' => __DIR__ . '/../..' . '/src/FroshPlatformTemplateMail.php',
+        'Frosh\\TemplateMail\\Services\\CachedMailFinderService' => __DIR__ . '/../..' . '/src/Services/CachedMailFinderService.php',
+        'Frosh\\TemplateMail\\Services\\MailFinderService' => __DIR__ . '/../..' . '/src/Services/MailFinderService.php',
+        'Frosh\\TemplateMail\\Services\\MailFinderServiceInterface' => __DIR__ . '/../..' . '/src/Services/MailFinderServiceInterface.php',
+        'Frosh\\TemplateMail\\Services\\MailLoader\\InkyLoader' => __DIR__ . '/../..' . '/src/Services/MailLoader/InkyLoader.php',
+        'Frosh\\TemplateMail\\Services\\MailLoader\\LoaderInterface' => __DIR__ . '/../..' . '/src/Services/MailLoader/LoaderInterface.php',
+        'Frosh\\TemplateMail\\Services\\MailLoader\\MjmlLoader' => __DIR__ . '/../..' . '/src/Services/MailLoader/MjmlLoader.php',
+        'Frosh\\TemplateMail\\Services\\MailLoader\\TwigLoader' => __DIR__ . '/../..' . '/src/Services/MailLoader/TwigLoader.php',
+        'Frosh\\TemplateMail\\Services\\SearchPathProvider' => __DIR__ . '/../..' . '/src/Services/SearchPathProvider.php',
+        'Frosh\\TemplateMail\\Services\\StringTemplateRenderer' => __DIR__ . '/../..' . '/src/Services/StringTemplateRenderer.php',
+        'Frosh\\TemplateMail\\Subscriber\\FlowSubscriber' => __DIR__ . '/../..' . '/src/Subscriber/FlowSubscriber.php',
+        'Frosh\\TemplateMail\\Subscriber\\MailTemplateSubscriber' => __DIR__ . '/../..' . '/src/Subscriber/MailTemplateSubscriber.php',
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInite549432a590b4a4b91476507122f2e30::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInite549432a590b4a4b91476507122f2e30::$prefixDirsPsr4;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit6077dd9a0eeb110de38fd5e9bd9633f3::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit6077dd9a0eeb110de38fd5e9bd9633f3::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit6077dd9a0eeb110de38fd5e9bd9633f3::$classMap;
 
         }, null, ClassLoader::class);
     }
