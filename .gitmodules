@@ -17,3 +17,6 @@
 [submodule "custom/plugins/MolliePayments"]
 	path = custom/plugins/MolliePayments
 	url = git@bitbucket.org:kreatifbz/molliepayments.git
+[submodule "custom/plugins/StripeShopwarePayment"]
+	path = custom/plugins/StripeShopwarePayment
+	url = git@bitbucket.org:kreatifbz/stripeshopwarepayment.git
