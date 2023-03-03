@@ -24,14 +24,25 @@ class CachedMailFinderService implements MailFinderServiceInterface
         $this->cache = $cache;
     }
 
-    public function findTemplateByTechnicalName(string $type, string $technicalName, BusinessEvent $businessEvent): ?string
+    public function findTemplateByTechnicalName(
+        string $type,
+        string $technicalName,
+        BusinessEvent $businessEvent,
+        bool $returnFolder = false
+    ): ?string
     {
+        $salesChannelId = '';
+
+        if (method_exists($businessEvent, 'getSalesChannelId')) {
+            $salesChannelId = $businessEvent->getSalesChannelId();
+        }
+
         $cacheKey = md5(
             $type .
             $technicalName .
             $businessEvent->getName() .
             json_encode($businessEvent->getConfig()) .
-            $businessEvent->getSalesChannelId() .
+            $salesChannelId .
             $businessEvent->getContext()->getLanguageId()
         );
         return $this->cache->get($cacheKey, function (CacheItem $cacheItem) use ($type, $technicalName, $businessEvent) {

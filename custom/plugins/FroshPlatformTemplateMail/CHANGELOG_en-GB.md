@@ -1,3 +1,25 @@
+# 1.0.0
+
+* Removed subscriber generator and use shopware core event
+
+# 0.4.5
+
+* Added command to export all templates to folder
+* Changed the template directories to use first the active theme
+
+# 0.4.4
+
+* Update dependency
+
+# 0.4.3
+
+* Add support for `mj_include`, thanks to @memoworker
+* Improved mjml error handling, thanks to @memoworker
+
+# 0.4.2
+
+* Compatibility 6.4.6.0
+
 # 0.4.1
 
 * Solved Composer InstalledVersions problem

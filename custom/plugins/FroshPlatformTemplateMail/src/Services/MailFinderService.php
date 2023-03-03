@@ -2,21 +2,22 @@
 
 namespace Frosh\TemplateMail\Services;
 
+use Doctrine\DBAL\Connection;
 use Frosh\TemplateMail\Services\MailLoader\LoaderInterface;
 use Shopware\Core\Framework\Adapter\Translation\Translator;
-use Shopware\Core\Framework\Api\Context\SalesChannelApiSource;
-use Shopware\Core\Framework\Context;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityRepositoryInterface;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Criteria;
 use Shopware\Core\Framework\Event\BusinessEvent;
+use Shopware\Core\Framework\Event\MailActionInterface;
+use Shopware\Core\Framework\Uuid\Uuid;
 use Shopware\Core\System\Language\LanguageEntity;
 use Twig\Loader\FilesystemLoader;
 
 class MailFinderService implements MailFinderServiceInterface
 {
-    const TYPE_HTML = 'html.';
-    const TYPE_PLAIN = 'plain.';
-    const TYPE_SUBJECT = 'subject.';
+    public const TYPE_HTML = 'html.';
+    public const TYPE_PLAIN = 'plain.';
+    public const TYPE_SUBJECT = 'subject.';
 
     /**
      * @var FilesystemLoader
@@ -38,41 +39,67 @@ class MailFinderService implements MailFinderServiceInterface
      */
     private $translator;
 
+    /**
+     * @var SearchPathProvider $searchPathProvider
+     */
+    private $searchPathProvider;
+
+    /**
+     * @var Connection $connection
+     */
+    private $connection;
+
     public function __construct(
         FilesystemLoader $filesystemLoader,
         iterable $availableLoaders,
         EntityRepositoryInterface $languageRepository,
-        Translator $translator
+        Translator $translator,
+        SearchPathProvider $searchPathProvider,
+        Connection $connection
     ) {
         $this->filesystemLoader = $filesystemLoader;
         $this->availableLoaders = $availableLoaders;
         $this->languageRepository = $languageRepository;
         $this->translator = $translator;
+        $this->searchPathProvider = $searchPathProvider;
+        $this->connection = $connection;
     }
 
-    public function findTemplateByTechnicalName(string $type, string $technicalName, BusinessEvent $businessEvent): ?string
+    public function findTemplateByTechnicalName(
+        string $type,
+        string $technicalName,
+        BusinessEvent $businessEvent,
+        bool $returnFolder = false
+    ): ?string
     {
         $paths = $this->filesystemLoader->getPaths();
-        $searchFolder = [$businessEvent->getContext()->getLanguageId(), 'global'];
 
-        if ($businessEvent->getContext()->getSource() instanceof SalesChannelApiSource) {
-            array_unshift($searchFolder, $businessEvent->getContext()->getSource()->getSalesChannelId());
+        $searchFolder = $this->searchPathProvider->buildPaths($businessEvent);
+
+        $stmt = $this->connection->prepare(
+            'SELECT IFNULL(a.path, p.path) AS `path` FROM `theme` AS t '
+                    . 'LEFT JOIN `theme_sales_channel` AS tsc ON tsc.`theme_id` = t.`id` '
+                    . 'LEFT JOIN `plugin` AS p ON p.`name` = t.`technical_name` '
+                    . 'LEFT JOIN `app` AS a ON a.`name` = t.`technical_name` '
+                    . 'WHERE tsc.`sales_channel_id` = ?;'
+        );
+
+        $stmt->bindValue(1, Uuid::fromHexToBytes($businessEvent->getSalesChannelId()));
+        $themePath = $stmt->executeQuery()->fetchOne();
+
+        if ($themePath !== null) {
+            usort($paths, function ($a, $b) use ($themePath) {
+                if (strpos($a, $themePath) !== false) {
+                    return -1;
+                }
+
+                if (strpos($b, $themePath) !== false) {
+                    return 1;
+                }
+
+                return 0;
+            });
         }
-
-        if ($businessEvent->getEvent()->getSalesChannelId()) {
-            array_unshift($searchFolder, $businessEvent->getEvent()->getSalesChannelId());
-        }
-
-        $criteria = new Criteria($businessEvent->getEvent()->getContext()->getLanguageIdChain());
-        $criteria->addAssociation('locale');
-        $languages = $this->languageRepository->search($criteria, Context::createDefaultContext())->getElements();
-
-        /** @var LanguageEntity $language */
-        foreach (array_reverse($languages) as $language) {
-            array_unshift($searchFolder, $language->getLocale()->getCode());
-        }
-
-        $searchFolder = array_keys(array_flip($searchFolder));
 
         foreach ($paths as $path) {
             foreach ($this->availableLoaders as $availableLoader) {
@@ -82,9 +109,11 @@ class MailFinderService implements MailFinderServiceInterface
                     foreach ($searchFolder as $folder) {
                         $filePath = $path . '/email/' . $folder . '/' . $technicalName . '/' . $type . $supportedExtension;
                         if (file_exists($filePath) && $content = $availableLoader->load($filePath)) {
-                            $this->fixTranslator($businessEvent);
+                            if ($businessEvent->getEvent() instanceof MailActionInterface) {
+                                $this->fixTranslator($businessEvent);
+                            }
 
-                            return $content;
+                            return $returnFolder ? $filePath : $content;
                         }
                     }
                 }
@@ -96,10 +125,6 @@ class MailFinderService implements MailFinderServiceInterface
 
     private function fixTranslator(BusinessEvent $businessEvent): void
     {
-        if (!$businessEvent->getEvent()->getSalesChannelId()) {
-            return;
-        }
-
         $criteria = new Criteria([$businessEvent->getContext()->getLanguageId()]);
         $criteria->addAssociation('locale');
 
