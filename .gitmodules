@@ -20,3 +20,6 @@
 [submodule "custom/plugins/StripeShopwarePayment"]
 	path = custom/plugins/StripeShopwarePayment
 	url = git@bitbucket.org:kreatifbz/stripeshopwarepayment.git
+[submodule "custom/plugins/SwSiaPay"]
+	path = custom/plugins/SwSiaPay
+	url = git@github.com:kreatifIT/SwSiaPay.git
